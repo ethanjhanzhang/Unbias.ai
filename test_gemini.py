@@ -5,8 +5,12 @@ Standalone script to test Google Gemini API key
 import requests
 import json
 
-# Your Google Gemini API key
-API_KEY = "AIzaSyDY0PoN8G1rVqtGc12bakA801vAzXk02D0"
+# Your Google Gemini API key (load from environment variable)
+import os
+from dotenv import load_dotenv
+
+load_dotenv('backend/.env')
+API_KEY = os.getenv('GEMINI_API_KEY')
 
 def test_gemini_api():
     """Test if the Google Gemini API key works"""
