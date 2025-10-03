@@ -4,7 +4,8 @@ Web app that detects bias in AI prompts and rewrites them objectively using NLP 
 
 ## Features
 
-**Dual Analysis Modes:**
+<img width="800" alt="Screenshot" src="https://github.com/user-attachments/assets/2cc578ba-d984-4eb5-a12c-7b65f3201177" />
+
 - 🔍 **Basic Mode** - Fast, rule-based pattern matching using NLP
 - 🤖 **AI Mode** - Deep semantic analysis powered by Google Gemini
 
