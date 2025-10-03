@@ -2,11 +2,11 @@ import axios from 'axios';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
 
-export const analyzePrompt = async (prompt, domain = 'general') => {
+export const analyzePrompt = async (prompt, mode = 'nlp') => {
   try {
     const response = await axios.post(`${API_BASE_URL}/api/analyze`, {
       prompt,
-      domain
+      mode
     });
     return response.data;
   } catch (error) {

@@ -1,145 +1,91 @@
 # Prompt Objectivity Analyzer
 
-A web application that uses AI and NLP to detect bias in prompts and rewrite them to be more objective. Combat echo chambers and promote better AI interactions.
-
-## Purpose
-
-Personal LLMs can commonly serve as self-validation chambers or echo chambers. This tool helps users:
-- Identify subjective language and biases in their prompts
-- Rewrite prompts to be more objective
-- Combat misinformation and biased AI responses
-- Reduce polarization in political, scientific, and medical queries
+Web app that detects bias in AI prompts and rewrites them objectively using NLP and AI.
 
 ## Features
 
-- **Bias Detection**: Identifies subjective language, loaded terms, absolutist language, confirmation bias, and leading questions
-- **Prompt Rewriting**: Automatically rewrites prompts to be more neutral and objective
-- **Visual Highlighting**: Shows detected biases highlighted in the original text
-- **Domain-Specific Analysis**: Tailored suggestions for political, science, medical, or general topics
-- **Bias Scoring**: Provides a numerical bias score (0-100)
-- **Alternative Suggestions**: Offers multiple objective alternatives to your prompt
+**Dual Analysis Modes:**
+- 🔍 **Basic Mode** - Fast, rule-based pattern matching using NLP
+- 🤖 **AI Mode** - Deep semantic analysis powered by Google Gemini
+
+**Core Capabilities:**
+- Detects 6 bias types: subjective language, loaded terms, absolutist language, confirmation bias, leading questions, presumptive language
+- Auto-detects domain (political, science, medical, general)
+- Visual bias highlighting with color-coded severity (0-100 score)
+- Automatic prompt rewriting with change tracking
+- Domain-specific alternative suggestions
 
 ## Tech Stack
 
+**Backend:** Python, Flask, NLTK, Google Gemini API
+**Frontend:** React, Axios
+**ML/NLP:** Tokenization, pattern matching, transformer integration ready
+
+## Quick Start
+
 ### Backend
-- Python 3.8+
-- Flask (REST API)
-- NLTK (Natural Language Processing)
-- Transformers (for future deep learning integration)
-- spaCy (linguistic analysis)
-
-### Frontend
-- React 18
-- Axios (API communication)
-- CSS3 (styling)
-
-## Installation
-
-### Prerequisites
-- Python 3.8 or higher
-- Node.js 16 or higher
-- npm or yarn
-
-### Backend Setup
-
-1. Navigate to the backend directory:
 ```bash
 cd backend
-```
-
-2. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-4. Run the Flask server:
-```bash
+# Add your Gemini API key to backend/.env:
+# GEMINI_API_KEY=your_key_here
+
 python api/app.py
 ```
 
-The API will be available at `http://localhost:5000`
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
+### Frontend
 ```bash
 cd frontend
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
-
-3. Start the development server:
-```bash
 npm start
 ```
 
-The app will open at `http://localhost:3000`
-
-## Usage
-
-1. Open the web application in your browser
-2. Enter your prompt in the text area
-3. Select the appropriate domain (general, political, science, or medical)
-4. Click "Analyze Prompt"
-5. Review the bias analysis, highlighted biases, and rewritten prompt
-6. Copy the objective version to use with your AI assistant
+Open http://localhost:3000
 
 ## Example
 
-**Original Prompt:**
-"Why is climate change obviously a hoax? Everyone knows it's fake news."
+**Input:** "Why is climate change obviously fake?"
 
-**Detected Biases:**
+**Detected:**
+- Bias score: 60
 - Subjective language: "obviously"
-- Loaded terms: "fake"
-- Confirmation bias: Leading question structure
+- Presumptive language: assumes conclusion
+- Leading question structure
 
-**Rewritten Prompt:**
-"What is the scientific evidence regarding climate change?"
+**Rewritten:** "What evidence exists regarding climate change?"
 
-## Future Enhancements
+## Use Cases
 
-- [ ] Implement transformer-based deep learning models
-- [ ] Add retrieval-augmented generation (RAG) for context
-- [ ] Create model training pipeline for continuous learning
-- [ ] Add user feedback mechanism to improve accuracy
-- [ ] Implement feature engineering for domain-specific improvements
-- [ ] Add support for multiple languages
-- [ ] Create browser extension for real-time bias detection
+- Reduce echo chambers in LLM interactions
+- Improve research queries (scientific, medical, political)
+- Educational tool for critical thinking
+- Combat misinformation through objective framing
 
-## Architecture
+## Project Structure
 
 ```
-prompt-objectivity-analyzer/
 ├── backend/
-│   ├── models/
-│   │   ├── bias_detector.py       # NLP bias detection
-│   │   └── prompt_rewriter.py     # Prompt rewriting logic
-│   ├── api/
-│   │   └── app.py                 # Flask REST API
-│   └── requirements.txt
+│   ├── models/          # Bias detection, prompt rewriting
+│   ├── utils/           # Domain detection, Gemini client
+│   └── api/             # Flask REST API
 ├── frontend/
 │   ├── src/
-│   │   ├── components/            # React components
-│   │   ├── services/              # API service layer
-│   │   └── styles/                # CSS styling
-│   └── package.json
+│   │   ├── components/  # React UI components
+│   │   ├── services/    # API integration
+│   │   └── styles/      # CSS
 └── README.md
 ```
 
+## Future Enhancements
+
+- Deep learning model training with user feedback
+- RAG integration for factual verification
+- Multi-language support
+- Browser extension
+
 ## License
 
-For private use only.
-
-## Contributing
-
-This is a personal project. Contributions and suggestions are welcome for educational purposes.
+Private use only.

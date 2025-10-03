@@ -12,6 +12,33 @@
   font-size: 1.5rem;
 }
 
+.domain-detected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #667eea;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.domain-emoji {
+  font-size: 1.5rem;
+}
+
+.domain-label {
+  color: #333;
+  font-size: 1rem;
+}
+
+.domain-confidence {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
 .bias-score-container {
   display: flex;
   align-items: center;

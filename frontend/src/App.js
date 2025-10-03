@@ -10,12 +10,12 @@ function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
-  const handleAnalyze = async (prompt, domain) => {
+  const handleAnalyze = async (prompt, mode) => {
     setLoading(true);
     setError(null);
 
     try {
-      const data = await analyzePrompt(prompt, domain);
+      const data = await analyzePrompt(prompt, mode);
       setResult(data);
     } catch (err) {
       setError(err.message || 'Failed to analyze prompt. Please try again.');
@@ -46,6 +46,8 @@ function App() {
               biasScore={result.bias_score}
               biases={result.biases_detected}
               originalPrompt={result.original_prompt}
+              domain={result.domain}
+              domainConfidence={result.domain_confidence}
             />
 
             <ResultDisplay

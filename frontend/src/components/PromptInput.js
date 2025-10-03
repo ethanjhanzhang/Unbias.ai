@@ -3,18 +3,42 @@ import '../styles/PromptInput.css';
 
 function PromptInput({ onAnalyze, loading }) {
   const [prompt, setPrompt] = useState('');
-  const [domain, setDomain] = useState('general');
+  const [mode, setMode] = useState('nlp');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (prompt.trim()) {
-      onAnalyze(prompt, domain);
+      onAnalyze(prompt, mode);
     }
   };
 
   return (
     <div className="prompt-input-container">
       <form onSubmit={handleSubmit}>
+        <div className="mode-selector">
+          <label>Analysis Mode:</label>
+          <div className="mode-buttons">
+            <button
+              type="button"
+              className={`mode-button ${mode === 'nlp' ? 'active' : ''}`}
+              onClick={() => setMode('nlp')}
+              disabled={loading}
+            >
+              🔍 Basic Mode
+              <span className="mode-desc">Rule-based pattern matching</span>
+            </button>
+            <button
+              type="button"
+              className={`mode-button ${mode === 'ai' ? 'active' : ''}`}
+              onClick={() => setMode('ai')}
+              disabled={loading}
+            >
+              🤖 AI Mode
+              <span className="mode-desc">Gemini-powered analysis</span>
+            </button>
+          </div>
+        </div>
+
         <div className="input-group">
           <label htmlFor="prompt">Enter your prompt:</label>
           <textarea
@@ -25,21 +49,6 @@ function PromptInput({ onAnalyze, loading }) {
             rows="5"
             disabled={loading}
           />
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="domain">Domain:</label>
-          <select
-            id="domain"
-            value={domain}
-            onChange={(e) => setDomain(e.target.value)}
-            disabled={loading}
-          >
-            <option value="general">General</option>
-            <option value="political">Political</option>
-            <option value="science">Science</option>
-            <option value="medical">Medical</option>
-          </select>
         </div>
 
         <button type="submit" disabled={loading || !prompt.trim()}>

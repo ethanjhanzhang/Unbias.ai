@@ -8,6 +8,65 @@ form {
   gap: 20px;
 }
 
+.mode-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mode-selector > label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.mode-button {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.mode-button:hover:not(:disabled) {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.mode-button.active {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  color: #667eea;
+}
+
+.mode-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mode-desc {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #888;
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
